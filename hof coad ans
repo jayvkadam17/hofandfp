@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Examples</title>
+  <script>
+    // Task 1: Reverse String with setTimeout
+    function reverseString(input) {
+      setTimeout(() => {
+        const reversed = input.split("").reverse().join("");
+        console.log("Task 1:", reversed);
+      }, 2000);
+    }
+
+    const input = "Hello, World!";
+    reverseString(input);
+
+    // Task 2: Random Number Generator with Delay and Progress Indication
+    function generateRandomNumber() {
+      let count = 3;
+      console.log("Task 2: Generating random number in 3 seconds...");
+
+      const countdown = setInterval(() => {
+        console.log(`${count} seconds remaining...`);
+        count--;
+
+        if (count === 0) {
+          clearInterval(countdown);
+          const randomNum = Math.floor(Math.random() * 100);
+          console.log(`Random number generated: ${randomNum}`);
+        }
+      }, 1000);
+    }
+
+    generateRandomNumber();
+
+    // Task 3: Convert Store's Inventory Prices to Indian Rupees
+    function convertPricesToRupees(inventory) {
+      const exchangeRate = 80;
+
+      const convertedInventory = inventory.map(item => {
+        const convertedPrice = item.price * exchangeRate;
+        return { ...item, price: convertedPrice };
+      });
+
+      return convertedInventory;
+    }
+
+    const storeInventory = [
+      { name: "Item 1", price: 10 },
+      { name: "Item 2", price: 20 },
+      { name: "Item 3", price: 30 }
+    ];
+
+    const convertedInventory = convertPricesToRupees(storeInventory);
+    console.log("Task 3:", convertedInventory);
+
+    // Task 4: Filtering and Capitalizing Books Published After 2010 with Author Names
+    function filterAndCapitalizeBooks(books) {
+      const filteredBooks = books.filter(book => book.year >= 2010);
+      const capitalizedBooks = filteredBooks.map(book => {
+        const capitalizedAuthor = book.author.toUpperCase();
+
